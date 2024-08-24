@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "name": "New JSNB",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "const texts = document.querySelector(\".texts\");\n\nwindow.SpeechRecognition =\n  window.SpeechRecognition || window.webkitSpeechRecognition;\n\nconst recognition = new SpeechRecognition();\nrecognition.interimResults = true;\n\nlet p = document.createElement(\"p\");\n\nrecognition.addEventListener(\"result\", (e) => {\n  texts.appendChild(p);\n  const text = Array.from(e.results)\n    .map((result) => result[0])\n    .map((result) => result.transcript)\n    .join(\"\");\n\n  p.innerText = text;\n  if (e.results[0].isFinal) {\n    if (text.includes(\"how are you\")) {\n      p = document.createElement(\"p\");\n      p.classList.add(\"replay\");\n      p.innerText = \"I am fine\";\n      texts.appendChild(p);\n    }\n    if (\n      text.includes(\"what's your name\") ||\n      text.includes(\"what is your name\")\n    ) {\n      p = document.createElement(\"p\");\n      p.classList.add(\"replay\");\n      p.innerText = \"My Name is Cifar\";\n      texts.appendChild(p);\n    }\n    if (text.includes(\"open my YouTube\")) {\n      p = document.createElement(\"p\");\n      p.classList.add(\"replay\");\n      p.innerText = \"opening youtube channel\";\n      texts.appendChild(p);\n      console.log(\"opening youtube\");\n      window.open(\"https://www.youtube.com/channel/UCdxaLo9ALJgXgOUDURRPGiQ\");\n    }\n    p = document.createElement(\"p\");\n  }\n});\n\nrecognition.addEventListener(\"end\", () => {\n  recognition.start();\n});\n\nrecognition.start();",
+      "status": "[1]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "<section>\n   <h1>Speech<br> Recognition</h1>\n   <p>Available In Chrome😎 Only</p>\n   <div class=\"container\">\n     <div class=\"texts\">\n     </div>\n   </div>\n </section>",
+      "status": "",
+      "output": "<section>\n   <h1>Speech<br> Recognition</h1>\n   <p>Available In Chrome😎 Only</p>\n   <div class=\"container\">\n     <div class=\"texts\">\n     </div>\n   </div>\n </section>",
+      "type": "html"
+    },
+    {
+      "code": "<style>\n* {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\nhtml {\n  font-family: \"Montserrat\";\n  font-size: 20px;\n}\nsection {\n  min-height: 100vh;\n  width: 100%;\n  display: flex;\n  align-items: flex-start;\n  background-color: rgb(37, 37, 37);\n  flex-direction: column;\n  padding: 50px 0;\n}\nsection h1 {\n  color: rgba(255, 255, 255, 0.322);\n  text-align: center;\n  width: 100%;\n  font-size: 50px;\n  margin-bottom: 10px;\n}\nsection p {\n  text-align: center;\n  color: rgba(255, 255, 255, 0.322);\n  width: 100%;\n  margin-bottom: 40px;\n}\n.container {\n  width: 90%;\n  max-width: 500px;\n  margin: 0 auto;\n  justify-content: center;\n}\n.texts p {\n  color: black;\n  text-align: left;\n  width: 100%;\n  background-color: white;\n  padding: 10px;\n  border-radius: 8px;\n  margin-bottom: 10px;\n}\n.texts p.replay {\n  text-align: right;\n}\n</style>",
+      "status": "",
+      "output": "<style>\n* {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\nhtml {\n  font-family: \"Montserrat\";\n  font-size: 20px;\n}\nsection {\n  min-height: 100vh;\n  width: 100%;\n  display: flex;\n  align-items: flex-start;\n  background-color: rgb(37, 37, 37);\n  flex-direction: column;\n  padding: 50px 0;\n}\nsection h1 {\n  color: rgba(255, 255, 255, 0.322);\n  text-align: center;\n  width: 100%;\n  font-size: 50px;\n  margin-bottom: 10px;\n}\nsection p {\n  text-align: center;\n  color: rgba(255, 255, 255, 0.322);\n  width: 100%;\n  margin-bottom: 40px;\n}\n.container {\n  width: 90%;\n  max-width: 500px;\n  margin: 0 auto;\n  justify-content: center;\n}\n.texts p {\n  color: black;\n  text-align: left;\n  width: 100%;\n  background-color: white;\n  padding: 10px;\n  border-radius: 8px;\n  margin-bottom: 10px;\n}\n.texts p.replay {\n  text-align: right;\n}\n</style>",
+      "type": ""
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
